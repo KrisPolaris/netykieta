@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netykieta — Kultura w internecie</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #080a14;
+    --card: #121629;
+    --purple: #a78bfa;
+    --blue: #60a5fa;
+    --text: #f4f4ff;
+    --muted: #a5abc2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, sans-serif;
+    line-height: 1.7;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: #7845ff;
+    filter: blur(180px);
+    opacity: .16;
+    top: -300px;
+    left: 20%;
+    z-index: -1;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 9%;
+    background: #080a14dd;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid #ffffff12;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span { color: var(--purple); }
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 22px;
+    font-size: 13px;
+    transition: .2s;
+}
+
+nav a:hover { color: white; }
+
+.hero {
+    text-align: center;
+    padding: 120px 20px 100px;
+}
+
+.tag {
+    color: #c4b5fd;
+    background: #a78bfa16;
+    border: 1px solid #a78bfa55;
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 10vw, 105px);
+    line-height: 1.08;
+    letter-spacing: -7px;
+    margin: 30px 0 20px;
+    font-weight: 900;
+    background: linear-gradient(110deg, white, #b9a1ff 48%, #60a5fa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 16px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 27px;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    background: linear-gradient(110deg, #8056ed, #438be9);
+    font-weight: 700;
+    transition: .25s;
+}
+
+.btn:hover { transform: translateY(-4px); }
+
+section {
+    max-width: 1100px;
+    padding: 65px 25px;
+    margin: auto;
+}
+
+.label {
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: clamp(30px, 5vw, 43px);
+    letter-spacing: -2px;
+    margin: 10px 0;
+}
+
+.desc {
+    color: var(--muted);
+    max-width: 700px;
+    margin-bottom: 35px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card {
+    padding: 27px;
+    background: linear-gradient(145deg, #171c33, #101425);
+    border: 1px solid #ffffff12;
+    border-radius: 19px;
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #a78bfa77;
+}
+
+.icon {
+    font-size: 28px;
+    margin-bottom: 13px;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.source {
+    color: #b9a1ff;
+    font-size: 11px;
+    display: inline-block;
+    margin-top: 12px;
+    text-decoration: none;
+}
+
+.source:hover { text-decoration: underline; }
+
+.highlight {
+    padding: 30px;
+    border-radius: 20px;
+    background: linear-gradient(110deg, #7845ff33, #328ee933);
+    border: 1px solid #a78bfa44;
+    margin-top: 35px;
+}
+
+.highlight p { color: #c3c8df; }
+
+.sources {
+    display: grid;
+    gap: 13px;
+}
+
+.source-item {
+    padding: 20px;
+    background: var(--card);
+    border: 1px solid #ffffff12;
+    border-radius: 14px;
+}
+
+.source-item a {
+    color: #b9a1ff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.source-item a:hover { text-decoration: underline; }
+
+.source-item p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid #ffffff12;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+footer strong { color: var(--purple); }
+
+@media(max-width: 750px) {
+    .grid { grid-template-columns: 1fr; }
+    nav { padding: 18px 5%; }
+    nav a { margin-left: 10px; font-size: 11px; }
+    .hero h1 { letter-spacing: -3px; }
+    .hero { padding: 85px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">NETYKIETA<span>.</span></div>
+    <div>
+        <a href="#definicja">Definicja</a>
+        <a href="#zasady">Zasady</a>
+        <a href="#zrodla">Źródła</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <span class="tag">EDUKACJA CYFROWA</span>
+    <h1>Internet to<br>też ludzie.</h1>
+    <p>
+        Poznaj zasady netykiety, czyli dobrego zachowania
+        w internecie. Dowiedz się, jak komunikować się
+        z innymi i bezpiecznie korzystać z sieci.
+    </p>
+    <a href="#definicja" class="btn">Poznaj netykietę ↓</a>
+</header>
+
+<section id="definicja">
+    <div class="label">01 / Podstawy</div>
+    <h2>Czym jest netykieta?</h2>
+    <p class="desc">
+        Netykieta (ang. netiquette) to zbiór zasad dobrego
+        zachowania w internecie. Jest internetowym odpowiednikiem
+        savoir-vivre'u i określa, jak powinniśmy komunikować
+        się z innymi użytkownikami sieci.
+    </p>
+    <a class="source"
+       href="https://www.gov.pl/web/baza-wiedzy/netykieta-czyli-savoir-vivre-w-internecie"
+       target="_blank">
+       Źródło: Gov.pl — Netykieta, czyli savoir-vivre w internecie ↗
+    </a>
+</section>
+
+<section id="zasady">
+    <div class="label">02 / Oficjalne zalecenia</div>
+    <h2>Najważniejsze zasady</h2>
+    <p class="desc">
+        Poniższe zasady opracowano na podstawie materiałów
+        Ministerstwa Cyfryzacji, UODO i ZPE.
+    </p>
+
+    <div class="grid">
+
+        <article class="card">
+            <div class="icon">🤝</div>
+            <h3>Szanuj innych</h3>
+            <p>Nie obrażaj, nie poniżaj i nie ośmieszaj innych użytkowników, nawet gdy mają odmienne zdanie.</p>
+            <a class="source" href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">Ministerstwo Cyfryzacji ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">🔠</div>
+            <h3>Nie pisz CAPS LOCKIEM</h3>
+            <p>Pisanie całymi wielkimi literami może być odbierane jako krzyczenie.</p>
+            <a class="source" href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">Ministerstwo Cyfryzacji ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">✍️</div>
+            <h3>Dbaj o poprawną pisownię</h3>
+            <p>Stosuj zasady poprawnej pisowni i staraj się pisać zrozumiale.</p>
+            <a class="source" href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">Ministerstwo Cyfryzacji ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">🛑</div>
+            <h3>Nie szerz hejtu</h3>
+            <p>Nie publikuj obraźliwych treści. Szkodliwe materiały zgłaszaj administratorom serwisów.</p>
+            <a class="source" href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">Ministerstwo Cyfryzacji ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">📜</div>
+            <h3>Przestrzegaj regulaminów</h3>
+            <p>Zapoznaj się z zasadami serwisu, z którego korzystasz.</p>
+            <a class="source" href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">Ministerstwo Cyfryzacji ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">🔍</div>
+            <h3>Sprawdzaj informacje</h3>
+            <p>Przed udostępnieniem wiadomości sprawdź, czy pochodzi z wiarygodnego źródła.</p>
+            <a class="source" href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">Ministerstwo Cyfryzacji ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">🔐</div>
+            <h3>Chroń swoje dane</h3>
+            <p>Nie udostępniaj publicznie adresu zamieszkania, numeru telefonu ani nazwy szkoły.</p>
+            <a class="source" href="https://uodo.gov.pl/pl/645/4277" target="_blank">UODO ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">🔑</div>
+            <h3>Twórz silne hasła</h3>
+            <p>Używaj długich, unikalnych haseł i nie udostępniaj ich innym osobom.</p>
+            <a class="source" href="https://uodo.gov.pl/pl/645/4277" target="_blank">UODO ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">📸</div>
+            <h3>Szanuj prywatność innych</h3>
+            <p>Przed opublikowaniem wspólnego zdjęcia upewnij się, że druga osoba wyraża na to zgodę.</p>
+            <a class="source" href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">Ministerstwo Cyfryzacji ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">©️</div>
+            <h3>Szanuj prawa autorskie</h3>
+            <p>Podawaj autora i źródło wykorzystywanych materiałów. Nie przypisuj sobie cudzej pracy.</p>
+            <a class="source" href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">Ministerstwo Cyfryzacji ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">🔗</div>
+            <h3>Uważaj na podejrzane linki</h3>
+            <p>Nie otwieraj nieznanych linków i załączników, które mogą być niebezpieczne.</p>
+            <a class="source" href="https://uodo.gov.pl/pl/645/4277" target="_blank">UODO ↗</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">📢</div>
+            <h3>Nie spamuj</h3>
+            <p>Nie wysyłaj niechcianych reklam, powtarzających się wiadomości i niepotrzebnych treści.</p>
+            <a class="source" href="https://zpe.gov.pl/a/savoir-vivre-w-internecie/DmSKCbonG" target="_blank">ZPE ↗</a>
+        </article>
+
+    </div>
+
+    <div class="highlight">
+        <h3>💡 Pamiętaj o cyfrowym śladzie</h3>
+        <p>
+            Aktywność w internecie może pozostawiać ślady.
+            Opublikowane treści mogą zostać zapisane,
+            skopiowane i rozpowszechnione przez innych.
+            Zastanów się, zanim coś opublikujesz.
+        </p>
+        <a class="source" href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">Źródło: Ministerstwo Cyfryzacji ↗</a>
+    </div>
+</section>
+
+<section id="zrodla">
+    <div class="label">03 / Bibliografia</div>
+    <h2>Źródła informacji</h2>
+    <p class="desc">
+        Treści na stronie zostały opracowane na podstawie
+        poniższych materiałów edukacyjnych i oficjalnych publikacji.
+    </p>
+
+    <div class="sources">
+
+        <div class="source-item">
+            <a href="https://www.gov.pl/web/cyfryzacja/jak-zachowywac-sie-w-sieci-poznaj-zasady-netykiety" target="_blank">
+                Ministerstwo Cyfryzacji — Jak zachowywać się w sieci? ↗
+            </a>
+            <p>Publikacja z 19 marca 2024 r. — podstawowe zasady netykiety.</p>
+        </div>
+
+        <div class="source-item">
+            <a href="https://www.gov.pl/web/baza-wiedzy/netykieta-czyli-savoir-vivre-w-internecie" target="_blank">
+                Gov.pl — Netykieta, czyli savoir-vivre w internecie ↗
+            </a>
+            <p>Definicja netykiety i kultura komunikacji online.</p>
+        </div>
+
+        <div class="source-item">
+            <a href="https://uodo.gov.pl/pl/645/4277" target="_blank">
+                Urząd Ochrony Danych Osobowych — Materiały edukacyjne ↗
+            </a>
+            <p>Ochrona danych osobowych i bezpieczeństwo w internecie.</p>
+        </div>
+
+        <div class="source-item">
+            <a href="https://zpe.gov.pl/a/savoir-vivre-w-internecie/DmSKCbonG" target="_blank">
+                Zintegrowana Platforma Edukacyjna — Savoir-vivre w internecie ↗
+            </a>
+            <p>Materiał edukacyjny dotyczący zasad netykiety.</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <strong>NETYKIETA.</strong><br>
+    Kultura zaczyna się od Ciebie.<br><br>
+    Projekt edukacyjny na lekcję informatyki.
+</footer>
+
+</body>
+</html>
